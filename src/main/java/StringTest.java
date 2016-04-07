@@ -5,26 +5,50 @@ public class StringTest {
 	public static String[] getClosing(String[] values) {
 		Stack<Character> bracketStack = new Stack<Character>();
 		String[] closings = new String[values.length];
+		boolean hasBraces = false;
+		boolean matched = true;
 		int arrIndex = 0;
+		
 		for(String x: values) {
-			System.out.println(x);
 			for(char c : x.toCharArray()){
-				System.out.println("Reading " + c);
 				if(c == '(' || c == '{' || c =='['){
-					System.out.println("Pushing " + c);
 					bracketStack.push(c);
+					hasBraces = true;
 				}
 				else {
-					if((c == ')' && bracketStack.peek().charValue() == '(') ||
-						(c == '}' && bracketStack.peek().charValue() == '{') ||
-						(c == ']' && bracketStack.peek().charValue() == '[')){
-							System.out.println("Popping " + c);
+					switch(c){
+					case ')':
+						if(!bracketStack.isEmpty() && bracketStack.peek().charValue() == '(') {
 							bracketStack.pop();
 						}
+						else {
+							matched = false;
+						}
+						break;
+					case '}':
+						if(!bracketStack.isEmpty() && bracketStack.peek().charValue() == '{') {
+							bracketStack.pop();
+						}
+						else {
+							matched = false;
+						}
+						break;
+					case ']':
+						if(bracketStack.peek().charValue() == '[') {
+							bracketStack.pop();
+						}
+						else {
+							matched = false;
+						}
+						break;
+					default:
+						break;
+							
 					}
 				}
+			}
 
-			if(bracketStack.isEmpty()){
+			if(bracketStack.isEmpty() && hasBraces && matched){
 				closings[arrIndex] = "YES";
 			}
 			else {
@@ -32,13 +56,15 @@ public class StringTest {
 			}
 			bracketStack.clear();
 			arrIndex++;
+			matched = true;
+			hasBraces = false;
 		}
 		return closings;
 	}
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String[] values = new String[] {"2", "{}[]()", "{[}]"};
+		String[] values = new String[] {"2", "{}[]()", "{[}]", "", "{", "abh"};
 		for(String x: getClosing(values)) {
 			System.out.print(x + " ");
 		}
