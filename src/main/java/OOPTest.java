@@ -1,7 +1,10 @@
 abstract class Calculation implements ICalculation{
-	private int z;
+	protected int z;
 	
-	public Calculation() {}
+	public Calculation() 
+	{
+		System.out.println(z);
+	}
 	
 	public void addition(int x, int y) {
 		System.out.println("From Calculation addition result is " + String.valueOf(x + y));
@@ -18,7 +21,7 @@ interface ICalculation {
 public class OOPTest extends Calculation{
 	
 	public OOPTest() {
-		super();
+		//super();
 	}
 	
 	public void addition(int x, int y){
@@ -37,7 +40,8 @@ public class OOPTest extends Calculation{
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		OOPTest t = new OOPTest();
-		t.addition(5, 6);
+		System.out.println(Integer.MIN_VALUE);
+		t.addition(Integer.MAX_VALUE, 1);
 		t.multiplication(5, 6);
 		t.subtraction(6, 5);
 	}
