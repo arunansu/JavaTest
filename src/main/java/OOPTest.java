@@ -3,7 +3,7 @@ abstract class Calculation implements ICalculation{
 	
 	public Calculation() 
 	{
-		System.out.println(z);
+		System.out.println("Initial value of z: " + String.valueOf(z));
 	}
 	
 	public void addition(int x, int y) {
@@ -22,6 +22,7 @@ public class OOPTest extends Calculation{
 	
 	public OOPTest() {
 		//super();
+		System.out.println("Derived class value of z: " + String.valueOf(z));
 	}
 	
 	public void addition(int x, int y){
@@ -40,7 +41,7 @@ public class OOPTest extends Calculation{
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		OOPTest t = new OOPTest();
-		System.out.println(Integer.MIN_VALUE);
+		System.out.println("Integer.MIN_VALUE: " + String.valueOf(Integer.MIN_VALUE));
 		t.addition(Integer.MAX_VALUE, 1);
 		t.multiplication(5, 6);
 		t.subtraction(6, 5);
