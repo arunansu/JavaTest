@@ -1,6 +1,6 @@
 
 public class LargestSumSubArray {
-	
+	//Compute O(n), Memory O(1)
 	public static int maxSumSubArray(int[] arr) {
 		if(arr == null || arr.length == 0) return 0;
 		if(arr.length == 1) return arr[0];

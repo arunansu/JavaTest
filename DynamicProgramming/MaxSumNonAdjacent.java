@@ -1,6 +1,6 @@
 
 public class MaxSumNonAdjacent {
-	
+	//Compute O(n), Memory O(n)
 	public static int maxSumNonAdjacent(int[] a) {
 		if(a == null || a.length == 0) return 0;
 		if(a.length == 1) return a[0];
