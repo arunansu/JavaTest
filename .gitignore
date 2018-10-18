@@ -1,3 +1,9 @@
+#Intellij
+.idea
+.idea_modules
+*.iml
+out/
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
